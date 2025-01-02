@@ -4,7 +4,6 @@
 (setq auto-save-default t
       make-backup-files t)
 (setq confirm-kill-emacs nil)
-(setq display-line-numbers-type nil)
 (setq-default evil-shift-width 2)
 
 (setq-default
@@ -27,7 +26,7 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'semibold))
 (setq doom-theme 'doom-monokai-pro)
 
 (setq explicit-shell-file-name
@@ -45,14 +44,18 @@
 
 (setq! go-eldoc-gocode "gocode-gomod")
 
-(lsp-register-custom-settings
- '(("gopls.hints" ((assignVariableTypes . t)
-                   (compositeLiteralFields . t)
-                   (compositeLiteralTypes . t)
-                   (constantValues . t)
-                   (functionTypeParameters . t)
-                   (parameterNames . t)
-                   (rangeVariableTypes . t)))))
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp-inlay-hints-mode)
+
+(after! lsp-mode
+  (lsp-register-custom-settings
+   '(("gopls.hints" ((assignVariableTypes . t)
+                     (compositeLiteralFields . t)
+                     (compositeLiteralTypes . t)
+                     (constantValues . t)
+                     (functionTypeParameters . t)
+                     (parameterNames . t)
+                     (rangeVariableTypes . t))))))
 
 (add-hook 'rustic-mode-hook #'lsp)
 
@@ -101,21 +104,21 @@
     '(outline-8 :weight semi-bold)
     '(outline-9 :weight semi-bold)
     '(org-document-title :weight extra-bold :height 1.5)
-    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)))
+    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)
 
-(setq gac-automatically-push-p 't)
+    (setq gac-automatically-push-p 't)
 
-(add-hook 'org-mode-hook 'org-auto-tangle-mode)
+    (add-hook 'org-mode-hook 'org-auto-tangle-mode)
 
-(setq org-download-image-org-width '350)
+    (setq org-download-image-org-width '350)
 
-(setq org-download-heading-lvl nil)
+    (setq org-download-heading-lvl nil)
 
-(map! :leader "wa" #'ace-select-window)
+    (map! :leader "wa" #'ace-select-window)
 
-(map! :leader "e" #'treemacs)
+    (map! :leader "e" #'treemacs)
 
-(map! :leader "y" #'yank-from-kill-ring)
+    (map! :leader "y" #'yank-from-kill-ring)
 
-(add-hook 'text-mode-hook #'auto-fill-mode)
-(setq-default fill-column 80)
+    (add-hook 'text-mode-hook #'auto-fill-mode)
+    (setq-default fill-column 80)

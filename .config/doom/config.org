@@ -43,7 +43,7 @@ Focus new window after splitting.
 #+end_src
 ** Theme and Fonts
 #+BEGIN_SRC emacs-lisp :tangle ./config.el
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'semibold))
 (setq doom-theme 'doom-monokai-pro)
 #+END_SRC
 
@@ -76,8 +76,14 @@ Setting vterm path.
 (setq! go-eldoc-gocode "gocode-gomod")
 #+end_src
 **** Gopls
+
+#+begin_src emacs-lisp :tangle ./config.el
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp-inlay-hints-mode)
+#+end_src
 ***** Inlay hints
 #+begin_src emacs-lisp :tangle ./config.el
+(after! lsp-mode
 (lsp-register-custom-settings
  '(("gopls.hints" ((assignVariableTypes . t)
                    (compositeLiteralFields . t)
@@ -85,7 +91,7 @@ Setting vterm path.
                    (constantValues . t)
                    (functionTypeParameters . t)
                    (parameterNames . t)
-                   (rangeVariableTypes . t)))))
+                   (rangeVariableTypes . t))))))
 #+end_src
 *** Rust
 #+begin_src emacs-lisp :tangle ./config.el
@@ -164,7 +170,7 @@ Open lookups inside of eww
     '(outline-8 :weight semi-bold)
     '(outline-9 :weight semi-bold)
     '(org-document-title :weight extra-bold :height 1.5)
-    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)))
+    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)
 #+end_src
 *** Git auto commit and push
 The Git-auto-commit mode in ~/org is enabled using ~/org/.dir-locals.el. Source
