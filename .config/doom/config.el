@@ -40,31 +40,27 @@
 
 (add-load-path! "~/emacs-libvterm")
 
+(after! lsp-mode
+(add-hook 'lsp-mode-hook #'lsp-inlay-hints-mode))
+
 (add-hook 'lsp-mode-hook #'indent-bars-mode)
 
 (setq! go-eldoc-gocode "gocode-gomod")
 
-(add-hook 'go-mode-hook #'lsp)
-(add-hook 'go-mode-hook #'lsp-inlay-hints-mode)
-
 (after! lsp-mode
-  (lsp-register-custom-settings
-   '(("gopls.hints" ((assignVariableTypes . t)
-                     (compositeLiteralFields . t)
-                     (compositeLiteralTypes . t)
-                     (constantValues . t)
-                     (functionTypeParameters . t)
-                     (parameterNames . t)
-                     (rangeVariableTypes . t))))))
-
-(add-hook 'rustic-mode-hook #'lsp)
+(lsp-register-custom-settings
+ '(("gopls.hints" ((assignVariableTypes . t)
+                   (compositeLiteralFields . t)
+                   (compositeLiteralTypes . t)
+                   (constantValues . t)
+                   (functionTypeParameters . t)
+                   (parameterNames . t)
+                   (rangeVariableTypes . t))))))
 
 (add-hook 'rustic-mode-hook #'lsp-inlay-hints-mode)
 (setq lsp-rust-analyzer-display-chaining-hints t)
 (setq lsp-rust-analyzer-display-closure-return-type-hints t)
 (setq lsp-rust-analyzer-display-parameter-hints t)
-
-(add-hook! 'python-mode-hook #'lsp)
 
 (add-hook! 'python-mode-hook #'lsp-inlay-hints-mode)
 (setq lsp-pyright-basedpyright-inlay-hints-generic-types t)
@@ -104,21 +100,21 @@
     '(outline-8 :weight semi-bold)
     '(outline-9 :weight semi-bold)
     '(org-document-title :weight extra-bold :height 1.5)
-    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)
+    '(org-code :inherit org-block :background "gray15" :foreground "white" :slant italic :weight semi-bold)))
 
-    (setq gac-automatically-push-p 't)
+(setq gac-automatically-push-p 't)
 
-    (add-hook 'org-mode-hook 'org-auto-tangle-mode)
+(add-hook 'org-mode-hook 'org-auto-tangle-mode)
 
-    (setq org-download-image-org-width '350)
+(setq org-download-image-org-width '350)
 
-    (setq org-download-heading-lvl nil)
+(setq org-download-heading-lvl nil)
 
-    (map! :leader "wa" #'ace-select-window)
+(map! :leader "wa" #'ace-select-window)
 
-    (map! :leader "e" #'treemacs)
+(map! :leader "e" #'treemacs)
 
-    (map! :leader "y" #'yank-from-kill-ring)
+(map! :leader "y" #'yank-from-kill-ring)
 
-    (add-hook 'text-mode-hook #'auto-fill-mode)
-    (setq-default fill-column 80)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+(setq-default fill-column 80)
