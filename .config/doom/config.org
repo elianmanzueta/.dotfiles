@@ -43,9 +43,8 @@ Focus new window after splitting.
 ** Theme and Fonts
 #+BEGIN_SRC emacs-lisp :tangle ./config.el
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'semibold))
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-ayu-dark)
 #+END_SRC
-
 ** Terminal Setup
 *** Fish
 Setting fish shell paths.
@@ -67,7 +66,7 @@ Setting vterm path.
 ** Code
 #+begin_src emacs-lisp :tangle ./config.el
 (after! lsp-mode
-(add-hook 'lsp-mode-hook #'lsp-inlay-hints-mode))
+  (add-hook 'lsp-mode-hook #'lsp-inlay-hints-mode))
 #+end_src
 *** Indent Bars Mode
 #+begin_src emacs-lisp :tangle ./config.el
@@ -82,14 +81,14 @@ Setting vterm path.
 ***** Inlay hints
 #+begin_src emacs-lisp :tangle ./config.el
 (after! lsp-mode
-(lsp-register-custom-settings
- '(("gopls.hints" ((assignVariableTypes . t)
-                   (compositeLiteralFields . t)
-                   (compositeLiteralTypes . t)
-                   (constantValues . t)
-                   (functionTypeParameters . t)
-                   (parameterNames . t)
-                   (rangeVariableTypes . t))))))
+  (lsp-register-custom-settings
+   '(("gopls.hints" ((assignVariableTypes . t)
+                     (compositeLiteralFields . t)
+                     (compositeLiteralTypes . t)
+                     (constantValues . t)
+                     (functionTypeParameters . t)
+                     (parameterNames . t)
+                     (rangeVariableTypes . t))))))
 #+end_src
 *** Rust
 **** Inlay hints

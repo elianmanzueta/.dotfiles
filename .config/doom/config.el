@@ -27,7 +27,7 @@
       evil-vsplit-window-right t)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'semibold))
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-ayu-dark)
 
 (setq explicit-shell-file-name
       (cond
@@ -41,21 +41,21 @@
 (add-load-path! "~/emacs-libvterm")
 
 (after! lsp-mode
-(add-hook 'lsp-mode-hook #'lsp-inlay-hints-mode))
+  (add-hook 'lsp-mode-hook #'lsp-inlay-hints-mode))
 
 (add-hook 'lsp-mode-hook #'indent-bars-mode)
 
 (setq! go-eldoc-gocode "gocode-gomod")
 
 (after! lsp-mode
-(lsp-register-custom-settings
- '(("gopls.hints" ((assignVariableTypes . t)
-                   (compositeLiteralFields . t)
-                   (compositeLiteralTypes . t)
-                   (constantValues . t)
-                   (functionTypeParameters . t)
-                   (parameterNames . t)
-                   (rangeVariableTypes . t))))))
+  (lsp-register-custom-settings
+   '(("gopls.hints" ((assignVariableTypes . t)
+                     (compositeLiteralFields . t)
+                     (compositeLiteralTypes . t)
+                     (constantValues . t)
+                     (functionTypeParameters . t)
+                     (parameterNames . t)
+                     (rangeVariableTypes . t))))))
 
 (add-hook 'rustic-mode-hook #'lsp-inlay-hints-mode)
 (setq lsp-rust-analyzer-display-chaining-hints t)
