@@ -24,3 +24,5 @@
   :recipe (:host github :repo "orgtre/ankiorg"))
 (package! fish-mode)
 (package! org-auto-tangle)
+(package! f)
+(package! elfeed)

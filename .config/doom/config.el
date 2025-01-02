@@ -4,7 +4,10 @@
 (setq auto-save-default t
       make-backup-files t)
 (setq confirm-kill-emacs nil)
-(setq-default evil-shift-width 2)
+(setq display-line-numbers 'relative)
+(setq evil-shift-width 2)
+(setq projectile-project-search-path
+      '("~/projects"))
 
 (setq-default
  delete-by-moving-to-trash t                      ; Delete files to trash
